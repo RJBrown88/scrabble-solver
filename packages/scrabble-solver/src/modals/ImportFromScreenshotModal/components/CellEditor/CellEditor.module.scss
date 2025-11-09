@@ -1,0 +1,78 @@
+.cellEditor {
+  width: 100%;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+
+  th,
+  td {
+    padding: 0.5rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  th {
+    background-color: var(--color-background-lighter);
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  tbody tr {
+    &.lowConfidence {
+      background-color: var(--color-warning-bg);
+    }
+
+    &.editing {
+      background-color: var(--color-primary-bg);
+    }
+
+    &:hover:not(.editing) {
+      background-color: var(--color-background-lighter);
+    }
+  }
+}
+
+.letter {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.confidence {
+  font-variant-numeric: tabular-nums;
+
+  &.high {
+    color: var(--color-success);
+  }
+
+  &.medium {
+    color: var(--color-text-secondary);
+  }
+
+  &.low {
+    color: var(--color-warning);
+  }
+}
+
+.input {
+  width: 3rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.checkbox {
+  cursor: pointer;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}

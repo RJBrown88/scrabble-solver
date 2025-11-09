@@ -10,6 +10,7 @@ import { useDirection, useEffectOnce, useLanguage, useLocalStorage } from 'hooks
 import { LOCALE_FEATURES } from 'i18n';
 import {
   DictionaryModal,
+  ImportFromScreenshotModal,
   KeyMapModal,
   MenuModal,
   RemainingTilesModal,
@@ -28,7 +29,7 @@ interface Props {
   version: string;
 }
 
-type Modal = 'dictionary' | 'keyMap' | 'menu' | 'remainingTiles' | 'results' | 'settings' | 'words';
+type Modal = 'dictionary' | 'importFromScreenshot' | 'keyMap' | 'menu' | 'remainingTiles' | 'results' | 'settings' | 'words';
 
 const Index: FunctionComponent<Props> = ({ version }) => {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ const Index: FunctionComponent<Props> = ({ version }) => {
   const [isClient, setIsClient] = useState(false);
   const [modals, setModals] = useState<Record<Modal, boolean>>({
     dictionary: false,
+    importFromScreenshot: false,
     keyMap: false,
     menu: false,
     remainingTiles: false,
@@ -79,6 +81,7 @@ const Index: FunctionComponent<Props> = ({ version }) => {
 
           <NavButtons
             onClear={() => dispatch(reset())}
+            onShowImportFromScreenshot={() => patchModals({ importFromScreenshot: true })}
             onShowKeyMap={() => patchModals({ keyMap: true })}
             onShowMenu={() => patchModals({ menu: true })}
             onShowRemainingTiles={() => patchModals({ remainingTiles: true })}
@@ -94,6 +97,7 @@ const Index: FunctionComponent<Props> = ({ version }) => {
         isOpen={modals.menu}
         onClose={() => patchModals({ menu: false })}
         onShowDictionary={() => patchModals({ dictionary: true })}
+        onShowImportFromScreenshot={() => patchModals({ importFromScreenshot: true })}
         onShowRemainingTiles={() => patchModals({ remainingTiles: true })}
         onShowSettings={() => patchModals({ settings: true })}
         onShowWords={() => patchModals({ words: true })}
@@ -112,6 +116,11 @@ const Index: FunctionComponent<Props> = ({ version }) => {
       <ResultsModal isOpen={modals.results} onClose={() => patchModals({ results: false })} />
 
       <DictionaryModal isOpen={modals.dictionary} onClose={() => patchModals({ dictionary: false })} />
+
+      <ImportFromScreenshotModal
+        isOpen={modals.importFromScreenshot}
+        onClose={() => patchModals({ importFromScreenshot: false })}
+      />
     </>
   );
 };

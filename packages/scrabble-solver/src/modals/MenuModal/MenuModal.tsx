@@ -2,7 +2,7 @@ import { type FunctionComponent, memo } from 'react';
 
 import { Button, Modal } from 'components';
 import { LOCALE_FEATURES } from 'i18n';
-import { BookHalf, CardChecklist, Cog, Github, Sack } from 'icons';
+import { BookHalf, CardChecklist, Cog, Github, ImageImport, Sack } from 'icons';
 import { GITHUB_PROJECT_URL } from 'parameters';
 import { selectLocale, useTranslate, useTypedSelector } from 'state';
 
@@ -13,6 +13,7 @@ interface Props {
   isOpen: boolean;
   onClose: () => void;
   onShowDictionary: () => void;
+  onShowImportFromScreenshot: () => void;
   onShowRemainingTiles: () => void;
   onShowSettings: () => void;
   onShowWords: () => void;
@@ -23,6 +24,7 @@ const MenuModalBase: FunctionComponent<Props> = ({
   isOpen,
   onClose,
   onShowDictionary,
+  onShowImportFromScreenshot,
   onShowRemainingTiles,
   onShowSettings,
   onShowWords,
@@ -55,6 +57,16 @@ const MenuModalBase: FunctionComponent<Props> = ({
         onClick={onShowDictionary}
       >
         {translate('dictionary')}
+      </Button>
+
+      <Button
+        aria-label={translate('importFromScreenshot')}
+        className={styles.button}
+        Icon={ImageImport}
+        wide
+        onClick={onShowImportFromScreenshot}
+      >
+        {translate('importFromScreenshot')}
       </Button>
 
       <Button.Link

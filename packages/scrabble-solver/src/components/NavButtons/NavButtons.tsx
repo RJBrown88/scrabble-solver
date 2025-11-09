@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { type FunctionComponent, memo } from 'react';
 
 import { useAppLayout } from 'hooks';
-import { CardChecklist, Cog, Eraser, Github, KeyboardFill, List, Sack } from 'icons';
+import { CardChecklist, Cog, Eraser, Github, ImageImport, KeyboardFill, List, Sack } from 'icons';
 import { GITHUB_PROJECT_URL } from 'parameters';
 import { selectConfig, useTranslate, useTypedSelector } from 'state';
 
@@ -13,6 +13,7 @@ import { selectHasInvalidWords, selectHasOverusedTiles } from './selectors';
 
 interface Props {
   onClear: () => void;
+  onShowImportFromScreenshot: () => void;
   onShowKeyMap: () => void;
   onShowMenu: () => void;
   onShowRemainingTiles: () => void;
@@ -22,6 +23,7 @@ interface Props {
 
 const NavButtonsBase: FunctionComponent<Props> = ({
   onClear,
+  onShowImportFromScreenshot,
   onShowKeyMap,
   onShowMenu,
   onShowRemainingTiles,
@@ -71,6 +73,14 @@ const NavButtonsBase: FunctionComponent<Props> = ({
           Icon={Eraser}
           tooltip={translate('common.clear')}
           onClick={onClear}
+        />
+
+        <IconButton
+          aria-label={translate('importFromScreenshot')}
+          className={styles.button}
+          Icon={ImageImport}
+          tooltip={translate('importFromScreenshot')}
+          onClick={onShowImportFromScreenshot}
         />
       </div>
 
