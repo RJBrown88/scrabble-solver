@@ -15,6 +15,14 @@ export { Dictionary } from './Dictionary';
 export { FinalPattern } from './FinalPattern';
 export { Game, isGame } from './Game';
 export { HorizontalPattern } from './HorizontalPattern';
+export type {
+  ImportCell,
+  ImportCellEdit,
+  ImportRequest,
+  ImportResult,
+  OcrConfidence,
+} from './Import';
+export { ImportStage } from './Import';
 export { isError } from './isError';
 export { isObject } from './isObject';
 export { isLocale, Locale } from './Locale';

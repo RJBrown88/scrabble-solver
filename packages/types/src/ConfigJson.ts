@@ -16,4 +16,9 @@ export interface ConfigJson {
   name: string;
   rackSize: number;
   tiles: TileConfig[];
+  boardTemplate?: {
+    gridStyle: 'classic' | 'modern';
+    gutterPx: number;
+    tileVariant?: 'standard' | 'duel';
+  };
 }

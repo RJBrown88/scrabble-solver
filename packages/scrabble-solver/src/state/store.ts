@@ -4,6 +4,7 @@ import reduxSaga from 'redux-saga';
 import { boardSlice } from './board';
 import { cellFiltersSlice } from './cellFilters';
 import { dictionarySlice } from './dictionary';
+import { importFromScreenshotSlice } from './importFromScreenshot';
 import { rackSlice } from './rack';
 import { resultsSlice } from './results';
 import { rootSaga } from './sagas';
@@ -18,6 +19,7 @@ export const store = configureStore({
     board: boardSlice.reducer,
     cellFilters: cellFiltersSlice.reducer,
     dictionary: dictionarySlice.reducer,
+    importFromScreenshot: importFromScreenshotSlice.reducer,
     rack: rackSlice.reducer,
     results: resultsSlice.reducer,
     settings: settingsSlice.reducer,

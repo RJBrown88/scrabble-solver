@@ -6,7 +6,7 @@
 import { type PayloadAction } from '@reduxjs/toolkit';
 import { hasConfig, languages } from '@scrabble-solver/configs';
 import { Board, type Locale, type Result } from '@scrabble-solver/types';
-import { call, delay, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
+import { call, delay, fork, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
 
 import { LOCALE_FEATURES } from 'i18n';
 import { memoize } from 'lib';
@@ -16,6 +16,7 @@ import { initialize, reset } from './actions';
 import { boardSlice, selectBoard } from './board';
 import { cellFiltersSlice, selectCellFilter } from './cellFilters';
 import { dictionarySlice, selectDictionary } from './dictionary';
+import { importFromScreenshotSaga } from './importFromScreenshot';
 import { rackSlice, selectCharacters, selectRack } from './rack';
 import { resultsSlice } from './results';
 import {
@@ -39,6 +40,7 @@ const memoizedFindWordDefinitions = memoize(findWordDefinitions);
 type AnyGenerator = Generator<any, any, any>;
 
 export function* rootSaga(): AnyGenerator {
+  yield fork(importFromScreenshotSaga);
   yield takeEvery(boardSlice.actions.changeCellValue.type, onCellValueChange);
   yield takeEvery([rackSlice.actions.changeCharacter.type, rackSlice.actions.changeCharacters.type], onRackValueChange);
   yield takeEvery(resultsSlice.actions.applyResult.type, onApplyResult);
