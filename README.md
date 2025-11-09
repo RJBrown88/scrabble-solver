@@ -54,18 +54,47 @@
 
 ## Table of contents
 
-1. [Dictionaries](#dictionaries)
-2. [Run](#run)
-3. [Uninstall](#uninstall)
-4. [Develop](#develop)
+1. [Features](#features)
+2. [Dictionaries](#dictionaries)
+3. [Run](#run)
+4. [Uninstall](#uninstall)
+5. [Develop](#develop)
    1. [Setup](#setup)
    2. [Run app dev server](#run-app-dev-server)
    3. [Rebuild the entire project](#rebuild-the-entire-project)
    4. [Rebuild a single package](#rebuild-a-single-package)
    5. [Add a new language](#add-a-new-language)
-5. [Tech stack](#tech-stack)
-6. [Related projects](#related-projects)
-7. [Media](#media)
+6. [Tech stack](#tech-stack)
+7. [Related projects](#related-projects)
+8. [Media](#media)
+
+## Features
+
+### 🎯 Core Functionality
+- **Multi-game support**: Scrabble, Scrabble Duel, Super Scrabble, Letter League, Literaki, and Kelimelik
+- **8 languages**: English (GB/US), French, German, Persian, Polish, Romanian, Spanish, Turkish
+- **Fast solver**: Find top-scoring words in milliseconds
+- **Board analysis**: Interactive board with coordinate system and cell filtering
+- **Word validation**: Instant dictionary lookup with definitions
+- **Remaining tiles**: Track available tiles during gameplay
+
+### 📸 Screenshot Import (NEW)
+Import existing game boards directly from screenshots using OCR technology:
+
+- **Drag & drop** or **paste** screenshots from clipboard
+- **Automatic grid detection** - recognizes 15×15 Scrabble and 11×11 Duel boards
+- **OCR tile recognition** - uses Tesseract.js to read letters from images
+- **Multi-language support** - recognizes tiles in all 8 supported languages, including diacritics (ä, ö, ñ, ş, etc.)
+- **Confidence scoring** - visual indicators for low-confidence tiles
+- **Manual editing** - edit any detected tile before applying to board
+- **Two apply modes**:
+  - Apply to board - merge detected tiles with existing board
+  - Replace board - create new board from screenshot
+- **Zero bundle impact** - OCR engine loaded only when needed (~3MB lazy-loaded)
+
+**Usage**: Click the camera icon in the toolbar or menu, then drop/paste a screenshot of your game board.
+
+**Limitations**: Works best with well-framed, high-quality screenshots. For best results, ensure the game board fills most of the image with good lighting and contrast.
 
 ## Dictionaries
 
@@ -184,6 +213,7 @@ npm run build -w @scrabble-solver/word-lists
 - [Redux](https://redux.js.org/)
 - [Redux Toolkit](https://redux-toolkit.js.org/)
 - [Redux-Saga](https://redux-saga.js.org/)
+- [Tesseract.js](https://tesseract.projectnaptha.com/) (OCR for screenshot import)
 - [SCSS](https://sass-lang.com/)
 - [CSS Modules](https://github.com/css-modules/css-modules)
 - [include-media](https://eduardoboucas.github.io/include-media/)
