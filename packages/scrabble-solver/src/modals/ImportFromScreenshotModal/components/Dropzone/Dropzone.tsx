@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { type DragEvent, type FunctionComponent, memo, type ChangeEvent, useCallback, useRef } from 'react';
+import { type DragEvent, type FunctionComponent, memo, type ChangeEvent, useCallback, useEffect, useRef } from 'react';
 
 import { Button } from 'components';
 
@@ -91,7 +91,7 @@ const DropzoneBase: FunctionComponent<Props> = ({ className, onImageSelected, di
   );
 
   // Set up paste listener
-  useCallback(() => {
+  useEffect(() => {
     document.addEventListener('paste', handlePaste);
     return () => {
       document.removeEventListener('paste', handlePaste);
